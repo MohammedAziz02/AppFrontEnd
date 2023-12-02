@@ -1,0 +1,28 @@
+<!-- signin.component.html -->
+<div class="signin-container col-12 d-flex justify-content-center align-items-center mt-4">
+    <form [formGroup]="signUp" (ngSubmit)="onSubmit()" class="col-8 shadow p-3 mb-5 bg-body rounded">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email">
+            <p *ngIf="signUp.get('email')?.hasError('required') && signUp.get('email')?.touched">Email est requis</p>
+            <p *ngIf="signUp.get('email')?.hasError('email') && signUp.get('email')?.touched">Email invalide</p>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+            <p *ngIf="signUp.get('password')?.hasError('required') && signUp.get('password')?.touched">Mot de passe est requis</p>
+            <p *ngIf="signUp.get('password')?.hasError('minlength') && signUp.get('password')?.touched">Le mot de passe doit avoir au moins 4 caractères</p>
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" formControlName="passwordConfirm">
+            <p *ngIf="signUp.get('passwordConfirm')?.hasError('required') && signUp.get('passwordConfirm')?.touched">Confirm Mot de passe est requis</p>
+            <p *ngIf="signUp.get('passwordConfirm')?.hasError('minlength') && signUp.get('passwordConfirm')?.touched">Le mot de passe doit avoir au moins 4 caractères</p>
+        </div>
+        <div class="d-flex gap-4">
+            <button type="submit"  [disabled]="!signUp.valid" class="btn btn-primary ">Submit</button>
+        <button class="btn btn-success " routerLink="/signin">Signin</button>
+        </div>
+      </form>
+</div>
+  

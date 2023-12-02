@@ -1,0 +1,18 @@
+<!-- fileupload.component.html -->
+<div class="container mt-5">
+    <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()">
+      <div class="form-group col-5">
+        <h5 class="mb-4" for="file">Sélectionnez un fichier</h5>
+        <input class="form-control" type="file" id="file" (change)="onFileChange($event)" />
+      </div>
+  
+      <div class="progress mt-2" *ngIf="uploadPercentage > 0 && uploadPercentage < 100">
+        <div class="progress-bar" role="progressbar" [style.width.%]="uploadPercentage">
+          {{ uploadPercentage }}%
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-4 ">Envoyer</button>
+    </form>
+  </div>
+  
